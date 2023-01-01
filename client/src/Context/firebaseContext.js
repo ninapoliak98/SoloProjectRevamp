@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {auth} from "../firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {Navigate, useNavigate} from "react-router-dom";
 
 const AuthContext = React.createContext();
 const provider = new GoogleAuthProvider();
@@ -12,6 +13,7 @@ export function useAuth() {
 export function AuthProvider({children}) {
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
+    const navigate  = useNavigate();
 
     function loginGoogle() {
         return auth.signInWithPopup(provider).then(function(result) {
@@ -23,6 +25,7 @@ export function AuthProvider({children}) {
                 console.log('error login in with google')
             });
     }
+
     function signup(email, password) {
         return auth.createUserWithEmailAndPassword(email, password)
     }
@@ -39,6 +42,9 @@ export function AuthProvider({children}) {
         return auth.onAuthStateChanged(user => {
             setCurrentUser(user)
             setLoading(false)
+            //after user is set we automatically redirect to dashboard
+            navigate("/")
+
         })
     }, [])
 

@@ -25,7 +25,6 @@ function Login() {
     return (
         <div>
             <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
-                <GoogleAuth/>
                 {error &&  <div
                     className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
                     role="alert">
@@ -73,6 +72,9 @@ function Login() {
                         <span>
                            <Link className="text-purple-600 hover:underline" to="/forgot-password">Forgot Password?</Link>
                         </span>
+                    </div>
+                    <div className="flex mt-4 w-full justify-center">
+                        <GoogleAuth/>
                     </div>
                 </div>
                 {/*Already have an account Sign In*/}
