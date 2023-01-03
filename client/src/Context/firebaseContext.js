@@ -40,10 +40,10 @@ export function AuthProvider({children}) {
     }
     useEffect(() => {
         return auth.onAuthStateChanged(user => {
-            setCurrentUser(user)
-            setLoading(false)
+            setCurrentUser(user);
+            setLoading(false);
             //after user is set we automatically redirect to dashboard
-            navigate("/")
+            if (user) navigate("/");
 
         })
     }, [])
