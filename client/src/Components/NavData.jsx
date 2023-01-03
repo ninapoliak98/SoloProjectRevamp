@@ -1,6 +1,5 @@
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import SettingsIcon from '@mui/icons-material/Settings';
 
 
@@ -24,9 +23,5 @@ export const navData = [
         text: "Settings",
         link: "/settings"
     },
-    {
-        id: 3,
-        icon: <ExitToAppIcon/>,
-        text: "Exit",
-    }
+
 ]

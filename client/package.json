@@ -5,18 +5,25 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@ethersproject/providers": "^5.7.2",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@web3-onboard/injected-wallets": "^2.4.0",
+    "@web3-onboard/walletconnect": "^2.2.2",
+    "@web3-react/core": "^6.1.9",
+    "@web3-react/walletlink-connector": "^6.2.14",
     "axios": "^1.2.2",
+    "ethers": "^5.7.2",
     "firebase": "^9.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "web3modal": "^1.9.10"
   },
   "scripts": {
     "start": "react-scripts start",

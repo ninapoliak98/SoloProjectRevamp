@@ -18,7 +18,6 @@ function Dashboard() {
                 </div>
                 {/*Center*/}
                 <div className="bg-gray-400 w-full">
-
                 </div>
 
         </div>
