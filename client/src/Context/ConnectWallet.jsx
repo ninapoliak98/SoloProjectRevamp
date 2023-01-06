@@ -1,30 +1,64 @@
 import React, {useState} from 'react';
-import Web3Modal from 'web3modal'
-import {ethers} from 'ethers'
-import walletConnect from "@web3-onboard/walletconnect";
+import Web3Modal from "web3modal";
+import {ethers} from "ethers";
+import WalletConnectProvider from "@walletconnect/web3-provider";
+import WalletLink from "walletlink";
 
-const providerOptions = {}
+const providerOptions = {
+    binancechainwallet: {
+        package: true
+    },
+    walletconnect: {
+        package: WalletConnectProvider,
+        options: {
+            infuraId: process.env.INFURA_KEY
+        }
+    },
+    walletlink: {
+        package: WalletLink,
+        options: {
+            appName: "Crypto App",
+            infuraId: process.env.INFURA_KEY,
+            rpc: "",
+            chainId: 1,
+            appLogoUrl: null,
+            darkMode: true
+        }
+    },
+};
+let web3Modal = new Web3Modal({
+    providerOptions,
+    network: "rinkeby",
+    theme: "dark",
+    cacheProvider: true,
+})
 
-function ConnectWallet(props) {
-    const [account, setAccount] = useState(null)
+function ConnectWallet() {
+    const [accounts, setAccounts] = useState(null)
+    const [connectedWallet, setConnectedWallet] = useState(false)
 
-    const connectWallet = async () => {
+    const connect = async () => {
         try {
-            const web3modal = new Web3Modal({
-                cacheProvider: false,
-                providerOptions
-            })
-            const web3modalInstances = await web3modal.connect();
-            const web3modalProvider = new ethers.providers.Web3Provider(web3modalInstances)
-            console.log(web3modalProvider)
+            const web3ModalInstances = await web3Modal.connect();
+            const web3ModalProvider = new ethers.providers.Web3Provider(web3ModalInstances);
+            const signer = web3ModalProvider.getSigner();
+            setConnectedWallet(true)
+            console.log(web3ModalProvider)
+            console.log(signer.getAddress())
         } catch (e) {
-            console.log(`connecting wallet error: ${e}`)
+            console.error(e)
         }
     }
+    const disconnect = async () => {
+        web3Modal.clearCachedProvider();
+        window.localStorage.clear();
+        setConnectedWallet(false);
+    }
+
     return (
         <div>
-            web3modal wallet connect
-            <button onClick={connectWallet}>Connect</button>
+            {!connectedWallet ?  <button className="w-100 m-3" onClick={connect}>Connect</button> :
+                <button className="w-100 m-3" onClick={disconnect}>Disconnect</button>}
         </div>
     );
 }

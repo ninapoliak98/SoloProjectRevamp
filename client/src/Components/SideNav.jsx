@@ -49,7 +49,6 @@ function SideNav(props) {
                         {open ? <span className="ml-3">Log Out</span> : <span></span>}
                     </button>
                 </div>
-                <ConnectWallet/>
             </div>
     );
 }
