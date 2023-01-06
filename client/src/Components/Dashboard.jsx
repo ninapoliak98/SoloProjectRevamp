@@ -4,22 +4,24 @@ import {useAuth} from "../Context/firebaseContext";
 import Sidebar from "./Sidebar";
 import apiServices from "../Context/apiServices";
 import SideNav from "./SideNav";
-import ConnectWallet from "../Context/ConnectWallet";
+import ConnectWallet from "./ConnectWallet";
+import MainContent from "./MainContent";
 
 function Dashboard() {
    const { response }= apiServices("https://api.coingecko.com/api/v3/search/trending");
     console.log(response);
 
     return (
-        <div className="flex">
+        <div className="flex bg-[#161a1d] text-white">
 
                 {/*Sidebar*/}
                 <div>
                     <SideNav/>
                 </div>
                 {/*Center*/}
-                <div className="bg-gray-400 w-full">
+                <div className=" w-full">
                     <ConnectWallet/>
+                    <MainContent/>
                 </div>
 
         </div>

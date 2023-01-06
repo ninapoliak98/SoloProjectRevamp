@@ -5,7 +5,7 @@ import {navData} from "./NavData"
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import ConnectWallet from "../Context/ConnectWallet";
+import ConnectWallet from "./ConnectWallet";
 
 
 function SideNav(props) {
@@ -29,10 +29,10 @@ function SideNav(props) {
     }
 
     return (
-            <div className={`${open ? "w-72" :" w-20"} flex flex-col overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800 h-screen`}>
+            <div className={`${open ? "w-72" :" w-20"} flex flex-col overflow-y-auto py-4 px-3 bg-[#1c2125] rounded dark:bg-gray-800 h-screen`}>
                 <span className="ml-3 items-center">Logo</span>
                 <button className={"flex items-center m-4"} onClick={toggleMenu}>
-                    {open? <KeyboardDoubleArrowLeftIcon />: <KeyboardDoubleArrowRightIcon />}
+                    {open? <KeyboardDoubleArrowLeftIcon style={{color:"#2990ad"}}/>: <KeyboardDoubleArrowRightIcon style={{color:"#2990ad"}} />}
                 </button>
                 {navData.map(item =>{
                     return <div key={item.id} className="flex items-center  p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
@@ -45,7 +45,7 @@ function SideNav(props) {
                 })}
                 <div className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <button onClick={handleLogout}>
-                        <ExitToAppIcon></ExitToAppIcon>
+                        <ExitToAppIcon style={{color:"#2990ad"}}/>
                         {open ? <span className="ml-3">Log Out</span> : <span></span>}
                     </button>
                 </div>

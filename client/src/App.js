@@ -7,8 +7,8 @@ import Login from "./Components/Login";
 import PrivateRoute from "./Components/PrivateRoute";
 import ForgotPassword from "./Components/ForgotPassword";
 import { Web3ReactProvider } from '@web3-react/core'
-
 import { Web3Provider } from "@ethersproject/providers";
+
 
 function getLibrary(provider) {
 
@@ -26,9 +26,9 @@ function App() {
                             path="/"
                             element={
                                 <PrivateRoute>
-                                    <Web3ReactProvider getLibrary={getLibrary}>
-                                        <Dashboard />
-                                    </Web3ReactProvider>
+                                        <Web3ReactProvider getLibrary={getLibrary}>
+                                            <Dashboard />
+                                        </Web3ReactProvider>
                                 </PrivateRoute>
                             }
                         />

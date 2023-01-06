@@ -7,19 +7,19 @@ import SettingsIcon from '@mui/icons-material/Settings';
 export const navData = [
     {
         id: 0,
-        icon: <DashboardIcon/>,
+        icon: <DashboardIcon style={{color:"#2990ad"}}/>,
         text: "Dashboard",
         link: "/"
     },
     {
         id: 1,
-        icon: <AnalyticsIcon/>,
+        icon: <AnalyticsIcon style={{color:"#2990ad"}}/>,
         text: "Analytics",
         link: "/crypto"
     },
     {
         id: 2,
-        icon: <SettingsIcon/>,
+        icon: <SettingsIcon style={{color:"#2990ad"}}/>,
         text: "Settings",
         link: "/settings"
     },
