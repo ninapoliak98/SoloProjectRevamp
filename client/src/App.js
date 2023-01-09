@@ -18,7 +18,7 @@ function getLibrary(provider) {
 
 function App() {
     return (
-        <div>
+        <div className="">
             <Router>
                 <AuthProvider>
                     <Routes>

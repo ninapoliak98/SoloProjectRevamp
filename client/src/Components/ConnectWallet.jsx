@@ -49,8 +49,8 @@ function ConnectWallet() {
             const web3ModalProvider = new ethers.providers.Web3Provider(web3ModalInstances);
             const signer = await web3ModalProvider.getSigner();
             setConnectedWallet(true)
-            console.log(signer)
             setAccounts({address: await signer.getAddress()})
+            console.log(accounts)
         } catch (e) {
             console.error(e)
         } finally {
@@ -63,16 +63,23 @@ function ConnectWallet() {
         setConnectedWallet(false);
         setAccounts("")
     }
-    const value = {
-       accounts
-    }
-
     return(
         <div>
-            <div className={`${loading ? "backdrop-blur-xl bg-white/30" : "backdrop-filter-none"} w-2/3 m-4`}>
-                {!connectedWallet ?  <button className="w-100 m-3" onClick={connect}>Connect</button> :
-                    <button className="w-100 m-3" onClick={disconnect}>Disconnect</button>}
-                <WalletBalance signer = {accounts}/>
+            <div className= "flex flex-row w-2/3 m-4">
+                <div className="w-1/3">
+                    <h1 className="mb-3">Overview:</h1>
+                    <WalletBalance signer = {accounts}/>
+                </div>
+                <div className="w-2/3">
+                    <div className="flex flex-row text-center align-middle justify-between ml-4">
+                        <h1 className="mb-3">Connect Wallet: </h1>
+                        {!connectedWallet ?
+                            <button className="h-8 px-4 font-bold text-sm text-white transition-colors duration-150 bg-[#2990ad] rounded-full focus:shadow-outline hover:bg-slate-800" onClick={connect}>Connect</button>
+                            :
+                            <button className="h-8 px-4 font-bold text-sm text-white transition-colors duration-150 bg-[#2990ad] rounded-full focus:shadow-outline hover:bg-slate-800" onClick={disconnect}>Disconnect</button>}
+                    </div>
+
+                </div>
             </div>
         </div>
 

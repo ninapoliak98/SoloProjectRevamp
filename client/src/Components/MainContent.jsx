@@ -1,7 +1,9 @@
 import React from 'react';
 import WalletBalance from "./WalletBalance";
 
+
 function MainContent(props) {
+
     return (
         <div>
         {/*  Overview of wallet balance  */}
