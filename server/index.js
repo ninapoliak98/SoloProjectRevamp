@@ -1,26 +1,41 @@
-//imports
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-const coinGeckoAPI = require("./apicalls/coingecko");
-const express = require('express');
+const express = require("express");
+const Moralis = require("moralis").default;
 const app = express();
-const router = require('./router.js');
-const cors = require('cors');
-//Port
-const PORT = 8095;
-//Cors
+const cors = require("cors");
+const port = 3050;
+
 app.use(cors());
-//app.use
 app.use(express.json());
-app.use(router);
 
-// app.get('/coins', coinGeckoAPI.getCoinGeckoALl)
-app.get("/coins", async (req, res) => {
-    const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false";
-    const response = await fetch(url);
-    const json = await res.json();
-    console.log(json)
-})
+app.get("/balance", async (req, res) => {
+    try {
+        const { query } = req;
+        let balance;
+        if (query.toBlock) {
+            balance = await Moralis.EvmApi.balance.getNativeBalance({
+                address: query.address,
+                chain: query.chain,
+                toBlock: query.toBlock
+            });
+        }else{
+            balance = await Moralis.EvmApi.balance.getNativeBalance({
+                address: query.address,
+                chain: query.chain,
+            });
+        }
+        const result = balance.raw;
+        return res.status(200).json({ result });
+    } catch (e) {
+        console.log(e);
+        console.log("something went wrong");
+        return res.status(400).json();
+    }
+});
 
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-})
+Moralis.start({
+    apiKey: "ArwZpbNGlUCUpv5vuvZicfmcGfcceoxLp1h1Og5HaE6FUEjMPlyvIHAZynkfrhac",
+}).then(() => {
+    app.listen(port, () => {
+        console.log(`Listening for API Calls`);
+    });
+});

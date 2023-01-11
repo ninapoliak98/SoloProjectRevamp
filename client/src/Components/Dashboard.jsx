@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import apiServices from "../Context/apiServices";
 import SideNav from "./SideNav";
 import ConnectWallet from "./ConnectWallet";
-import MainContent from "./MainContent";
 import Trending from "./Trending";
+import Market from "./Market";
 
 function Dashboard() {
    const { response }= apiServices("https://api.coingecko.com/api/v3/search/trending");
@@ -23,6 +23,7 @@ function Dashboard() {
                         <Trending/>
                     </div>
                 </div>
+            <Market/>
 
         </div>
     );

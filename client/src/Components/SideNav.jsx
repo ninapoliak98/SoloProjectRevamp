@@ -29,7 +29,7 @@ function SideNav(props) {
     }
 
     return (
-            <div className={`${open ? "w-72" :" w-20"} flex flex-col overflow-y-auto py-4 px-3 bg-[#1c2125] rounded dark:bg-gray-800 h-screen`}>
+            <div className={`${open ? "w-72" :" w-20"} flex flex-col overflow-y-auto py-4 px-3 bg-[#1c2125] rounded dark:bg-gray-800 h-full`}>
                 <span className="ml-3 items-center">Logo</span>
                 <button className={"flex items-center m-4"} onClick={toggleMenu}>
                     {open? <KeyboardDoubleArrowLeftIcon style={{color:"#2990ad"}}/>: <KeyboardDoubleArrowRightIcon style={{color:"#2990ad"}} />}

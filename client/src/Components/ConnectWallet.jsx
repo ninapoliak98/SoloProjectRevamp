@@ -49,8 +49,8 @@ function ConnectWallet() {
             const web3ModalProvider = new ethers.providers.Web3Provider(web3ModalInstances);
             const signer = await web3ModalProvider.getSigner();
             setConnectedWallet(true)
-            setAccounts({address: await signer.getAddress()})
-            console.log(accounts)
+            setAccounts({address: await signer.getAddress(),
+                                chain: await signer.getChainId()})
         } catch (e) {
             console.error(e)
         } finally {
