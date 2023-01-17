@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import "./ConnectWallet"
 import axios from "axios";
-import {chainData} from "./ChainData";
+import {chainData} from "../Data/ChainData";
 
 
 function WalletBalance({signer}) {

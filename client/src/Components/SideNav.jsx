@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {useAuth} from "../Context/firebaseContext";
-import {navData} from "./NavData"
+import {navData} from "../Data/NavData"
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
