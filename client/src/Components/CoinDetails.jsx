@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import apiServices from "../Context/apiServices";
 import axios from "axios";
+import Chart from "./Chart";
 
 function CoinDetails({coin, show, setShow}) {
     const [response, setResponse] = useState(null)
@@ -35,8 +36,9 @@ function CoinDetails({coin, show, setShow}) {
                         <p className=" text-xs m-0 font-semibold">Percent/{response.market_data.price_change_percentage_1h_in_currency.usd}</p>
                     </div>
                 </div>
-                <div className="row-span-3 col-span-2 bg-slate-800 rounded shadow shadow-slate-900 max-w-full ">
+                <div className="row-span-3 col-span-2 bg-slate-800 rounded shadow shadow-slate-900 max-w-full max-h-72 min-h-full">
                     <h1>Graph</h1>
+                    <Chart coin = {coin.name}/>
                 </div>
                 <div className="flex flex-row gap-4 w-full ">
                     <div className=" bg-slate-800 text-left rounded shadow shadow-slate-900 overflow-auto max-h-52 p-5 min-w-fit">
