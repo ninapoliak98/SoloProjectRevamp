@@ -16,10 +16,10 @@ function CoinTrending({coin}) {
                     <p className="m-4 border-2 border-green-300 rounded-full px-4 py-1 text-center text-xs">price</p>
                 </div>
                 <div className="w-full flex justify-center m-2 mb-6">
-                    <img src={coin.small} alt={coin.name} className="m-4 p-5 rounded-full shadow-2xl shadow-slate-800"/>
+                    {coin.small ? <img src={coin.small} alt={coin.name} className="m-4 p-5 rounded-full shadow-2xl shadow-slate-800"/> :  <img src={coin.image} alt={coin.name} className="m-4 p-5 rounded-full shadow-2xl shadow-slate-800 h-1/3"/> }
                     <CoinDetails show={show}  setShow={setShow} coin={coin}/>
                 </div>
-            <h1 className="mb-5">Price</h1>
+            <h1 className="mb-5">price</h1>
         </div>
     );
 }

@@ -28,15 +28,18 @@ function SideNav(props) {
         }
     }
 
+    function handleNav(link) {
+        navigate(link)
+    }
+
     return (
-            <div className={`${open ? "w-72" :" w-20"} flex flex-col overflow-y-auto py-4 px-3 bg-[#1c2125] rounded dark:bg-gray-800 h-full`}>
+            <div className={`${open ? "w-72" :" w-20"} flex flex-col overflow-y-auto py-4 px-3 bg-[#1c2125] rounded dark:bg-gray-800`}>
                 <span className="ml-3 items-center">Logo</span>
                 <button className={"flex items-center m-4"} onClick={toggleMenu}>
                     {open? <KeyboardDoubleArrowLeftIcon style={{color:"#2990ad"}}/>: <KeyboardDoubleArrowRightIcon style={{color:"#2990ad"}} />}
                 </button>
                 {navData.map(item =>{
                     return <div key={item.id} className="flex items-center  p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-400 dark:hover:bg-gray-700">
-                        {/*Fix so that on click the logout logs the account out*/}
                         <Link to={item.link}>
                             {item.icon}
                         </Link>

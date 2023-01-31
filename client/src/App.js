@@ -8,6 +8,8 @@ import PrivateRoute from "./Components/PrivateRoute";
 import ForgotPassword from "./Components/ForgotPassword";
 import { Web3ReactProvider } from '@web3-react/core'
 import { Web3Provider } from "@ethersproject/providers";
+import Market from "./Components/Market";
+import SideNav from "./Components/SideNav";
 
 
 function getLibrary(provider) {
@@ -22,6 +24,14 @@ function App() {
             <Router>
                 <AuthProvider>
                     <Routes>
+                        <Route path="/signup" element={<Signup/>}/>
+                        <Route path="/login" element={<Login/>}/>
+                        <Route path="/forgot-password" element={<ForgotPassword/>}/>
+                    </Routes>
+                    <div className="flex bg-[#161a1d] text-white">
+                    <SideNav/>
+                        <div className="w-full">
+                    <Routes>
                         <Route
                             path="/"
                             element={
@@ -32,10 +42,11 @@ function App() {
                                 </PrivateRoute>
                             }
                         />
-                        <Route path="/signup" element={<Signup/>}/>
-                        <Route path="/login" element={<Login/>}/>
-                        <Route path="/forgot-password" element={<ForgotPassword/>}/>
+                        <Route path="/crypto" element={<Market/>}/>
+                        <Route path="/settings" element={<ForgotPassword/>}/>
                     </Routes>
+                        </div>
+                    </div>
                 </AuthProvider>
             </Router>
         </div>

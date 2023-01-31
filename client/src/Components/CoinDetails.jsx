@@ -19,7 +19,7 @@ function CoinDetails({coin, show, setShow}) {
             }
     }
     useEffect( () => {
-        if(show) fetchData(coin.name.toLowerCase())
+        if(show) fetchData(coin.id)
 
 
     }, [show])
@@ -38,7 +38,7 @@ function CoinDetails({coin, show, setShow}) {
                 </div>
                 <div className="row-span-3 col-span-2 bg-slate-800 rounded shadow shadow-slate-900 max-w-full max-h-72 min-h-full">
                     <h1>Graph</h1>
-                    <Chart coin = {coin.name}/>
+                    <Chart coin = {coin.id}/>
                 </div>
                 <div className="flex flex-row gap-4 w-full ">
                     <div className=" bg-slate-800 text-left rounded shadow shadow-slate-900 overflow-auto max-h-52 p-5 min-w-fit">

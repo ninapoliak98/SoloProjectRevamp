@@ -3,7 +3,7 @@ import apiServices from "../Context/apiServices";
 import SideNav from "./SideNav";
 import ConnectWallet from "./ConnectWallet";
 import Trending from "./Trending";
-import Market from "./Market";
+
 
 function Dashboard() {
    const { response }= apiServices("https://api.coingecko.com/api/v3/search/trending");
@@ -12,10 +12,6 @@ function Dashboard() {
     return (
         <div className="flex bg-[#161a1d] text-white">
 
-                {/*Sidebar*/}
-                <div>
-                    <SideNav/>
-                </div>
                 {/*Center*/}
                 <div className=" w-full">
                     <ConnectWallet/>
@@ -23,7 +19,6 @@ function Dashboard() {
                         <Trending/>
                     </div>
                 </div>
-            <Market/>
 
         </div>
     );
