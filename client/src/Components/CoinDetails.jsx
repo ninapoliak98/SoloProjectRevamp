@@ -5,6 +5,14 @@ import Chart from "./Chart";
 
 function CoinDetails({coin, show, setShow}) {
     const [response, setResponse] = useState(null)
+    const numberFormat = (value) => {
+        return new Intl.NumberFormat('en-IN', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 6,
+        }).format(value);
+    }
 
     const close = () => {
         setShow(false)
@@ -20,8 +28,6 @@ function CoinDetails({coin, show, setShow}) {
     }
     useEffect( () => {
         if(show) fetchData(coin.id)
-
-
     }, [show])
 
     return ((show) ? (
@@ -31,9 +37,11 @@ function CoinDetails({coin, show, setShow}) {
             {coin && response ? <div className="flex flex-col gap-4 m-4">
                 <div className="flex flex-row justify-start col-span-3 bg-slate-800 rounded shadow shadow-slate-900 max-w-full max-h-20">
                    <div className="flex flex-col m-4 text-left justify-center">
-                        <p className=" text-xs m-0 font-semibold">{coin.name}</p>
-                        <h1 className="text-xl m-0 font-semibold">{response.market_data.current_price.usd}</h1>
-                        <p className=" text-xs m-0 font-semibold">Percent/{response.market_data.price_change_percentage_1h_in_currency.usd}</p>
+                        <p className="m-0 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{coin.name}</p>
+                        <h1 className="text-xl m-1 font-medium text-gray-300 tracking-wider">{numberFormat(response.market_data.current_price.usd)}</h1>
+                        <p className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{numberFormat(Number(
+                            response.market_data.price_change_percentage_1h_in_currency.usd
+                        ).toFixed(2))}</p>
                     </div>
                 </div>
                 <div className="row-span-3 col-span-2 bg-slate-800 rounded shadow shadow-slate-900 max-w-full max-h-72 min-h-full">
@@ -44,11 +52,11 @@ function CoinDetails({coin, show, setShow}) {
                     <div className=" bg-slate-800 text-left rounded shadow shadow-slate-900 overflow-auto max-h-52 p-5 min-w-fit">
                         <h1 className="font-bold text-xl ml-2">Statistics</h1>
                      <div className="ml-4 mb-4 mt-2">
-                            <p>  Market Cap  {response.market_cap_rank}</p>
-                            <p>  Volume  {response.market_data.total_volume.usd}</p>
-                            <p>  Circulating Supply {response.market_data.circulating_supply} </p>
-                            <p>  ATH {response.market_data.ath.usd}</p>
-                            <p>  ATL {response.market_data.atl.usd}</p>
+                            <p className="">  Market Cap  {response.market_cap_rank}</p>
+                            <p>  Volume  {numberFormat(response.market_data.total_volume.usd)}</p>
+                            <p>  Circulating Supply {response.market_data.circulating_supply.toLocaleString()} </p>
+                            <p>  ATH {numberFormat(response.market_data.ath.usd)}</p>
+                            <p>  ATL {numberFormat(response.market_data.atl.usd)}</p>
                         </div>
                     </div>
                     <div className=" bg-slate-800 text-left rounded shadow shadow-slate-900 overflow-auto max-h-52 p-5  max-w-7xl">

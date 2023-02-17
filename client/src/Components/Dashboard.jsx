@@ -19,6 +19,7 @@ function Dashboard() {
                         <Trending/>
                     </div>
                 </div>
+            {}
 
         </div>
     );

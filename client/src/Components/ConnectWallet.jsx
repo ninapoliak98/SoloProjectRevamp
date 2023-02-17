@@ -4,6 +4,7 @@ import {ethers} from "ethers";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import WalletLink from "walletlink";
 import WalletBalance from "./WalletBalance";
+import Wallet from "./Wallet";
 const providerOptions = {
     binancechainwallet: {
         package: true
@@ -70,7 +71,7 @@ function ConnectWallet() {
                     <h1 className="mb-3">Overview:</h1>
                     <WalletBalance signer = {accounts}/>
                 </div>
-                <div className="w-2/3">
+                <div className="w-2/3 flex flex-col">
                     <div className="flex flex-row text-center align-middle justify-between ml-4">
                         <h1 className="mb-3">Connect Wallet: </h1>
                         {!connectedWallet ?
@@ -78,7 +79,9 @@ function ConnectWallet() {
                             :
                             <button className="h-8 px-4 font-bold text-sm text-white transition-colors duration-150 bg-[#2990ad] rounded-full focus:shadow-outline hover:bg-slate-800" onClick={disconnect}>Disconnect</button>}
                     </div>
-
+                    <div className="w-full ml-2 bg-slate-800 dark:border-slate-500 w-full rounded">
+                        <Wallet/>
+                    </div>
                 </div>
             </div>
         </div>

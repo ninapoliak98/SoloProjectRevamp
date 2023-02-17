@@ -4,6 +4,7 @@ import axios from "axios";
 import {chainData} from "../Data/ChainData";
 
 
+
 function WalletBalance({signer}) {
     const [balance, setBalance] = useState(null)
     const [loaded, setLoading] = useState(false)
@@ -67,7 +68,7 @@ function WalletBalance({signer}) {
                             <p className="text-slate-300 dark:text-slate-50 text-lg">
                                #
                             </p>
-                            <h3 className="text-slate-500 dark:text-slate-400 text-sm leading-6 truncate">
+                            <h3 className="text-slate-500 dark:text-slate-400 text-sm leading-6 truncate overflow-hidden">
                                 Transactions
                             </h3>
                             </div>

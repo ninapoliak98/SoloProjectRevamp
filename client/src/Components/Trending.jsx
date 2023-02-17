@@ -4,6 +4,7 @@ import CoinTrending from "./CoinTrending";
 
 function Trending(props) {
     const { response, loading }= apiServices("https://api.coingecko.com/api/v3/search/trending");
+    console.log(response)
 
     return (
         <div className="bg-slate-800 m-4 rounded">
